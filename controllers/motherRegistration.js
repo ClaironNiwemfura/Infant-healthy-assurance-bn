@@ -26,14 +26,13 @@ const motherRegister= async(req,res)=>{
         dateArrival: data.dateArrival
     });
 
-    motherInstance.save();
+    const result= await motherInstance.save();
 
     res.status(200).json({
-        message: "Account created successfully",
-        error: null,
-        data: data
+      message: "Account created successfully",
+      error: "Error creating the account",
+      data: result
     })
-
   }  
   catch(error){
     res.status(500).json({
@@ -41,7 +40,7 @@ const motherRegister= async(req,res)=>{
         error: "Error in the motherRegistration controller",
         data: null
     })
-    console.log("This is the error",err);
+    console.log("This is the error",error);
   }
 
 }
