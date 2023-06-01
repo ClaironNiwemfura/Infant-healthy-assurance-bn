@@ -5,7 +5,7 @@ import loginDoctor from "../controllers/doctorlogin.js";
 const router=express.Router();
 router.use(bodyParser.json());
 
-router.post("/loginDoctor",loginDoctor)
+router.post("/login",loginDoctor)
 
 
 export default router;

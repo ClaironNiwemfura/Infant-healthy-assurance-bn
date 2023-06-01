@@ -24,7 +24,7 @@ const loginDoctor = async (req,res)=>{
                     token: token
                 }); 
             }else{
-                return res.json({
+                return res.status(400).json({
                     message:"your password is not true"
                 });  
             }
@@ -32,7 +32,7 @@ const loginDoctor = async (req,res)=>{
                 message:"you have logged in successfully"
             });
         }else{
-            return res.json({
+            return res.status(400).json({
                 message:"user not found "
             });
         }

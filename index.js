@@ -3,14 +3,14 @@ import dotenv from "dotenv";
 import cors from "cors";
 import express from "express";
 import doctorroutes from "./routes/doctorroutes.js";
-import doctorLogin from "./routes/doctorlogin.js";
+import doctor from "./routes/doctorlogin.js";
 
 const server = express();
 server.use(cors());
 dotenv.config();
 
 server.use("/api/v1/", doctorroutes);
-server.use("/api/v1",doctorLogin);
+server.use("/api/v1/doctor",doctor);
 
 const port=5990;
 const connectToMongodb =() =>{
@@ -19,11 +19,11 @@ const connectToMongodb =() =>{
         console.log("mongodb connect")
     })
     .catch(() => {
-      console.log("mongodb not connected");
+      console.log("mongodb not connected"); 
     });
 }
 
 server.listen(port, () => {
-  console.log("server running" + port);
+  console.log("server running" + port); 
   connectToMongodb();
 });
