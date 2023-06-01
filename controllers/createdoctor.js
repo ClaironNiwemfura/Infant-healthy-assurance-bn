@@ -41,7 +41,7 @@ const createdoctoraccount = async (req, res) => {
       error: "Internal error server",
       data: "null",
     });
-    console.log("this is error:", err);
+    console.log("this is error:", err); 
   }
 };
 

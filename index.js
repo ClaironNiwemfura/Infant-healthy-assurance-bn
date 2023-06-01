@@ -3,6 +3,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import express from "express";
 import doctorroutes from "./routes/doctorroutes.js";
+import doctor from "./routes/doctorlogin.js";
+
 const server = express();
 import mother from './routes/motherRoutes.js'
 
@@ -12,6 +14,7 @@ server.use(express.json());
 dotenv.config();
 
 server.use("/api/v1/", doctorroutes);
+server.use("/api/v1/doctor",doctor);
 
 const port=3000;
 const connectToMongodb =() =>{
@@ -20,7 +23,7 @@ const connectToMongodb =() =>{
         console.log("mongodb connect")
     })
     .catch(() => {
-      console.log("mongodb not connected");
+      console.log("mongodb not connected"); 
     });
 }
 
@@ -30,6 +33,6 @@ server.use("/api/v1/mother", mother)
 
 
 server.listen(port, () => {
-  console.log("server running" + 6000);
+  console.log("server running" + port); 
   connectToMongodb();
 });
