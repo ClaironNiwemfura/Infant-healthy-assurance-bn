@@ -4,10 +4,11 @@ import cors from "cors";
 import express from "express";
 import doctorroutes from "./routes/doctorroutes.js";
 import doctor from "./routes/doctorlogin.js";
-
-const server = express();
 import mother from './routes/motherRoutes.js'
+import appointment from "./routes/appointment.js"
 
+const server=express();
+server.use(express.json());
 server.use(cors());
 server.use(express.json());
 
@@ -27,6 +28,7 @@ const connectToMongodb =() =>{
     });
 }
 
+server.use("/api/v1/appointment", appointment);
 
 
 server.use("/api/v1/mother", mother)
