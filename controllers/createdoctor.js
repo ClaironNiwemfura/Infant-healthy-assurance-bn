@@ -6,26 +6,12 @@ const createdoctoraccount = async (req, res) => {
     const data = req.body;
     const salt = await bcrypt.genSalt(8);
     const hashedPassword = await bcrypt.hash(data.password, salt);
-    req.body.password = hashedPassword;
+    data.password = hashedPassword;
     const savedUseremail = await CreateDoctorModel.findOne({
       email: data.email,
     });
-    const savedUsername = await CreateDoctorModel.findOne({
-      name: data.name,
-    });
     if (savedUseremail) {
-      res.status(409).json({
-        message: "Sorry email already exist",
-      });
-    } else if (savedUsername) {
-      res.status(409).json({
-        message: "Sorry name already exist",
-      });
-    } else {
-      res.status(200).json({
-        message: "successfull created account",
-        data: data,
-      });
+      return res.send("Sorry email already exist");
     }
     const userInstance = new CreateDoctorModel({
       name: data.name,
@@ -34,14 +20,19 @@ const createdoctoraccount = async (req, res) => {
       role: data.role,
       healthCenter: data.healthCenter,
     });
-    userInstance.save();
-  } catch (err) {
+    const response = await userInstance.save();
+    res.status(200).json({
+      message: "Doctor Account Created Successfully",
+      error: null,
+      data: response,
+    });
+  } catch (error) {
+    console.log("this is error:", error);
     res.status(500).json({
       message: "Failed",
       error: "Internal error server",
       data: "null",
     });
-    console.log("this is error:", err);
   }
 };
 

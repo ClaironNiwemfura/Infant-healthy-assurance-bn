@@ -12,9 +12,7 @@ server.use("/api/v1/", doctorroutes);
 const port = 6000;
 const connectToMongodb = () => {
   mongoose
-    .connect(
-      "mongodb+srv://Infant-Health-Care:einsten02@cluster0.kf7e0vs.mongodb.net/?retryWrites=true&w=majority"
-    )
+    .connect(process.env.MONGODBPASS)
     .then(() => {
       console.log("mongodb connect");
     })
