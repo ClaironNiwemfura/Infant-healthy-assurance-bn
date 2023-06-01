@@ -9,7 +9,7 @@ dotenv.config();
 
 server.use("/api/v1/", doctorroutes);
 
-const port = 6500;
+const port = 6000;
 const connectToMongodb = () => {
   mongoose
     .connect(
@@ -24,6 +24,6 @@ const connectToMongodb = () => {
 };
 
 server.listen(port, () => {
-  console.log("server running" + 6500);
+  console.log("server running" + 6000);
   connectToMongodb();
 });
