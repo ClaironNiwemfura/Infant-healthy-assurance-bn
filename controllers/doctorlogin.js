@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
+import CreateDoctorModel from "../models/doctormodel.js";
 
 
 dotenv.config();
@@ -11,9 +12,9 @@ const loginDoctor = async (req,res)=>{
     try{
         const data = req.body;
         const { email, password } = data;
-        const doctor = await doctorModel.findOne({ email:email});
+        const doctor = await CreateDoctorModel.findOne({ email:email});
        
-        if (user){
+        if (doctor){
             let doctorId = doctor._id;
             let compare = await bcrypt.compare(password,doctor.password);
             if (compare==true){
