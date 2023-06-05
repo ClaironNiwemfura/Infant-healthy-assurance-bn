@@ -6,7 +6,6 @@ import doctorroutes from "./routes/doctorroutes.js";
 import doctor from "./routes/doctorlogin.js";
 import mother from './routes/motherRoutes.js'
 import appointment from "./routes/appointment.js"
-import newappointment from "./routes/newappointment.js";
 
 const server=express();
 server.use(express.json());
@@ -31,8 +30,6 @@ const connectToMongodb = () => {
 }
 
 server.use("/api/v1/appointment", appointment);
-
-server.use("/api/v1/appointment", newappointment);
 
 
 server.use("/api/v1/mother", mother)
