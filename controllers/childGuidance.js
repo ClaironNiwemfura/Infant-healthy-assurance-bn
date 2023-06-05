@@ -43,36 +43,30 @@ const createGuidance = async (req, res) => {
 
 
 
-const getGuidance= async (req,res)=>{
-  try{
-
-    const guideId= req.params.guideId
-    const check= await childModel.findOne({guideId:guideId});
-    if(check){
-     res.status(409).json({
-      message: "The child Guide you are trying to read is not available",
-      error: "Error fetching the Child Guide",
-      data: null
-     });
-    }else{
-      res.status(200).json({
-        message: "The child Guide fetched successfully",
-        error: null,
-        data: check
-    })
-
+const getGuidance = async (req, res) => {
+  try {
+    const guideId = req.params.guideId;
+    const check = await childModel.findOne({ guideId: guideId });
+    if (!check) {
+      return res.status(409).json({
+        message: "The child Guide you are trying to read is not available",
+        error: "Error fetching the Child Guide",
+        data: null,
+      });
+    }
+    res.status(200).json({
+      message: "The child Guide fetched successfully",
+      error: null,
+      data: check,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error in the getGuidance controller",
+      error: error,
+      data: null,
+    });
   }
-  
-}
-catch(error){
-  res.status(500).json({
-    message: "Error in the getGuidance controlller",
-    error: error,
-    data: null
-})
-
-}
-}
+};
 
 
 
@@ -82,7 +76,7 @@ const updateGuidance = async (req, res) => {
       const guideId = req.params.guideId;
   
       const check = await childModel.find({guideId : guideId});
-      if (check) {
+      if (!check) {
         return res.status(409).json({
           message: "Child Guide trying to update not available",
         });
@@ -107,33 +101,33 @@ const updateGuidance = async (req, res) => {
 
 
 
-const deleteGuidance= async(req,res)=>{
-    try{
-  const childId= req.params.childId     
-  const check = await childModel.findOne({childId : childId});
-  if(check){
-    res.status(409).json({
-      message: "Guide trying to delete not found"
+  const deleteGuidance= async(req,res)=>{
+      try{
+    const childId= req.params.childId     
+    const check = await childModel.findOne({childId : childId});
+    if(!check){
+      res.status(409).json({
+        message: "Guide trying to delete not found"
+      })
+    }else{
+      const result= await childModel.deleteOne({childId: childId})
+      res.status(200).json({
+        message:"Child Guide deleted successfully",
+        error:null,
+        data:result
     })
-  }else{
-    const result= await childModel.deleteOne({childId: childId})
-    res.status(200).json({
-      message:"Child Guide deleted successfully",
-      error:null,
-      data:result
-  })
-  
-    }  
-  
+    
+      }  
+    
+    }
+    catch(error){
+      res.status(500).json({
+        message: "Error in the deleteGuide controller",
+        error: error,
+        data: null,
+      }); 
+    }
   }
-  catch(error){
-    res.status(500).json({
-      message: "Error in the deleteGuide controller",
-      error: error,
-      data: null,
-    }); 
-  }
-}
 
 
 export {updateGuidance,createGuidance,deleteGuidance, getGuidance}
