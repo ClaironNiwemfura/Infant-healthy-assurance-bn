@@ -5,7 +5,8 @@ import express from "express";
 import doctorroutes from "./routes/doctorroutes.js";
 import doctor from "./routes/doctorlogin.js";
 import mother from './routes/motherRoutes.js'
-import appointment from "./routes/appointment.js"
+import appointment from "./routes/appointment.js";
+import healthinfo from "./routes/healthinfo.js"
 
 const server=express();
 server.use(express.json());
@@ -16,6 +17,7 @@ dotenv.config();
 
 server.use("/api/v1/", doctorroutes);
 server.use("/api/v1/doctor",doctor);
+server.use("/api/v1/healthinfo",healthinfo);
 
 const port = 3000;
 const connectToMongodb = () => {
