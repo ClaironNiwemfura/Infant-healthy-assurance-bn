@@ -9,7 +9,7 @@ router.use(bodyParser.json())
 
 router.post("/create",createGuidance)
 router.put("/update/:guideId",updateGuidance)
-router.put("/read/:guideId",getGuidance)
-router.put("/delete/:childId",deleteGuidance)
+router.get("/read/:guideId",getGuidance)
+router.delete("/delete/:guideId",deleteGuidance)
 
 export default router
