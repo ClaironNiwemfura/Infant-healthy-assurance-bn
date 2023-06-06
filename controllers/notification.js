@@ -45,7 +45,7 @@ const updateNotification = async (req, res) => {
       _id: id,
     });
     if (notificationInstance.length == 0) {
-      res.status(400).json({
+      res.status(404).json({
         message: "Failer to update notification",
         error: "information not found",
         data: null,
@@ -76,7 +76,7 @@ const deleteNotification = async (req, res) => {
       _id: id,
     });
     if (notificationInstance.length == 0) {
-      res.status(400).json({
+      res.status(404).json({
         message: "Notification failed deleting",
         error: "information not deleted",
         data: null,
