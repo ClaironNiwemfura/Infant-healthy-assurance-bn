@@ -3,25 +3,17 @@ import childModel from '../models/childModel.js';
 const createGuidance = async (req, res) => {
   try {
     const data = req.body;
-    const check = await childModel.findOne({ guideId: data.guideId });
-    if (check) {
-      return res.status(409).json({
-        message: "Child guide already exists",
-      });
-    }
 
     const guideInstance = new childModel({
       name: data.name,
       age: data.age,
       guides: [
         {
-          question: "My child has a fever, what can I do?",
-          answer:
-            "If your child has a fever, you have to visit the closest hospital as soon as possible",
-          category: "Healthcare",
+          question: guides.question,
+          answer:guides.answer,
+          category: guides.category,
         },
       ],
-      guideId: data.guideId,
     });
 
     const result = await guideInstance.save();
@@ -67,6 +59,35 @@ const getGuidance = async (req, res) => {
     });
   }
 };
+
+
+
+
+const getAllGuidances= async(req,res)=>{
+ try{
+  const page= req.query.page
+  const range= req.query.limit
+
+  const end= limit * page
+  const start= end - limit
+  const result= await childModel.find({}).skip(start).limit(range)
+  res.status(200).json({
+    message: "Data fetched successfully",
+    error: null,
+    data: response
+ });
+}
+
+catch(error){
+  console.log("Error in the getAllGuidance")
+  res.status(500).json({
+      message: "Failed to get childGuidances",
+      error: error,
+      data:null
+  })
+}
+
+}
 
 
 

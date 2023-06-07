@@ -25,10 +25,6 @@ const childSchema = new mongoose.Schema({
         required: true
     },
     guides: [guideSchema],
-    guideId:{
-        type: Number,
-        required: true
-    }
 });
 
 
