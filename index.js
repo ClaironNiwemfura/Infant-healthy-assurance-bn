@@ -8,6 +8,7 @@ import mother from './routes/motherRoutes.js'
 import appointment from "./routes/appointment.js";
 import healthinfo from "./routes/healthinfo.js"
 
+
 const server=express();
 server.use(express.json());
 server.use(cors());
