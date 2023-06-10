@@ -5,12 +5,11 @@ const createGuidance = async (req, res) => {
     const data = req.body;
 
     const guideInstance = new childModel({
-      name: data.name,
       age: data.age,
       guides: [
         {
           question: guides.question,
-          answer:guides.answer,
+          answer: guides.answer,
           category: guides.category,
         },
       ],
@@ -38,7 +37,7 @@ const createGuidance = async (req, res) => {
 const getGuidance = async (req, res) => {
   try {
     const guideId = req.params.guideId;
-    const check = await childModel.findOne({_id : guideId });
+    const check = await childModel.findOne({ _id: guideId });
     if (!check) {
       return res.status(409).json({
         message: "The child Guide you are trying to read is not available",
@@ -63,92 +62,92 @@ const getGuidance = async (req, res) => {
 
 
 
-const getAllGuidances= async(req,res)=>{
- try{
-  const page= req.query.page
-  const range= req.query.limit
+const getAllGuidances = async (req, res) => {
+  try {
+    const page = req.query.page
+    const range = req.query.limit
 
-  const end= limit * page
-  const start= end - limit
-  const result= await childModel.find({}).skip(start).limit(range)
-  res.status(200).json({
-    message: "Data fetched successfully",
-    error: null,
-    data: response
- });
-}
+    const end = limit * page
+    const start = end - limit
+    const result = await childModel.find({}).skip(start).limit(range)
+    res.status(200).json({
+      message: "Data fetched successfully",
+      error: null,
+      data: response
+    });
+  }
 
-catch(error){
-  console.log("Error in the getAllGuidance")
-  res.status(500).json({
+  catch (error) {
+    console.log("Error in the getAllGuidance")
+    res.status(500).json({
       message: "Failed to get childGuidances",
       error: error,
-      data:null
-  })
-}
+      data: null
+    })
+  }
 
 }
 
 
 
 const updateGuidance = async (req, res) => {
-    try {
-      const data = req.body;
-      const guideId = req.params.guideId;
-  
-      const check = await childModel.find({_id : guideId});
-      if (!check) {
-        return res.status(409).json({
-          message: "Child Guide trying to update not available",
-        });
-      }
-  
-      const updatedGuide = await childModel.findOneAndUpdate({_id : guideId}, data);
-  
-      res.status(200).json({
-        message: "Child Guide updated successfully",
-        error: null,
-        data: updatedGuide,
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: "Error in the updateGuide controller",
-        error: error,
-        data: null,
+  try {
+    const data = req.body;
+    const guideId = req.params.guideId;
+
+    const check = await childModel.find({ _id: guideId });
+    if (!check) {
+      return res.status(409).json({
+        message: "Child Guide trying to update not available",
       });
     }
+
+    const updatedGuide = await childModel.findOneAndUpdate({ _id: guideId }, data);
+
+    res.status(200).json({
+      message: "Child Guide updated successfully",
+      error: null,
+      data: updatedGuide,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error in the updateGuide controller",
+      error: error,
+      data: null,
+    });
   }
+}
 
 
 
 
-  const deleteGuidance= async(req,res)=>{
-      try{
-    const childId= req.params.childId     
-    const check = await childModel.findOne({_id : guideId});
-    if(!check){
+const deleteGuidance = async (req, res) => {
+  try {
+    const childId = req.params.childId
+    const check = await childModel.findOne({ _id : guideId });
+    if (!check) {
       res.status(409).json({
         message: "Guide trying to delete not found"
       })
-    }else{
-      const result= await childModel.deleteOne({_id : guideId})
+    } else {
+      const result = await childModel.deleteOne({ _id : guideId })
       res.status(200).json({
-        message:"Child Guide deleted successfully",
-        error:null,
-        data:result
-    })
-    
-      }  
-    
+        message: "Child Guide deleted successfully",
+        error: null,
+        data: result
+      })
+
     }
-    catch(error){
-      res.status(500).json({
-        message: "Error in the deleteGuide controller",
-        error: error,
-        data: null,
-      }); 
-    }
+
   }
+  catch (error) {
+    res.status(500).json({
+      message: "Error in the deleteGuide controller",
+      error: error,
+      data: null,
+    });
+  }
+}
 
 
-export {updateGuidance,createGuidance,deleteGuidance, getGuidance}
+export { updateGuidance, createGuidance, deleteGuidance, getGuidance,getAllGuidances }
