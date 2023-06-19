@@ -9,3 +9,5 @@ router.use(bodyParser.json())
 router.post('/register', motherRegister)
 
 export default router
+
+
