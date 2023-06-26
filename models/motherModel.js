@@ -12,7 +12,6 @@ const motherSchema= new mongoose.Schema({
     },
     motherAge:{
         type: Number,
-        required: true
     },
     patientId:{
      type: String,
