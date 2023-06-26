@@ -22,24 +22,27 @@ const motherSchema= new mongoose.Schema({
         type: String,
         required: true
      },
+     province:{
+        type:string,
+     },
     cell:{
         type: String,
         required: true
     },
     sector:{
-        type: String,
-        required: true
+        type: String
     },
     district:{
         type: String,
         required: true
     },
     motherTel:{
-        type: String,
+        type: Number,
         required: true
     },
     fatherTel:{
-
+       type: Number,
+        required: true
     },
     emergencyTel:{
         type: String,
@@ -48,7 +51,19 @@ const motherSchema= new mongoose.Schema({
     dateArrival:{
         type: String,
         required: true
-    }
+    },
+    pregnancyDuration:{
+        type: Number,
+    },
+    babyname:{
+        type: String,
+    },
+    babyage:{
+        type: number,
+    },
+    babygender:{
+        type: String,
+    },
 
 })
 
