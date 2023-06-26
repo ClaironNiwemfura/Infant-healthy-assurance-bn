@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 
 
 const motherSchema= new mongoose.Schema({
+    
     mother:{
         type: String,
         required: true
@@ -65,4 +66,4 @@ const motherSchema= new mongoose.Schema({
 
 })
 
-export default mongoose.model("Mother registration", motherSchema)
+export default mongoose.model("MotherRegistration", motherSchema)
