@@ -24,13 +24,14 @@ const motherSchema= new mongoose.Schema({
      },
      province:{
         type:string,
+        required: true
      },
     cell:{
         type: String,
         required: true
     },
     sector:{
-        type: String
+        type: String,
     },
     district:{
         type: String,
@@ -42,11 +43,9 @@ const motherSchema= new mongoose.Schema({
     },
     fatherTel:{
        type: Number,
-        required: true
     },
     emergencyTel:{
         type: String,
-        required: true
     },
     dateArrival:{
         type: String,
