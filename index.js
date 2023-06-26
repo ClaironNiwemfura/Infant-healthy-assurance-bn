@@ -9,6 +9,7 @@ import child from './routes/childRoutes.js'
 
 import appointment from "./routes/appointment.js";
 import healthinfo from "./routes/healthinfo.js"
+
 import notificationroutes from "./routes/notificationroutes.js";
 import homepage from "./controllers/homepage.js";
 const server = express();

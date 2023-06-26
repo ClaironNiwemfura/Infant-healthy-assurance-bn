@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 const healthinfoschema = new mongoose.Schema({
     category:{
-        type:String,
-        required:"category is required"
+        type:String
     },
     title:{
         type:String,

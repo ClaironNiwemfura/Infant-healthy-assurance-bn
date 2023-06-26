@@ -17,13 +17,19 @@ const motherRegister= async(req,res)=>{
         motherAge: data.motherAge,
         patientId: data.patientId,
         healthCondition: data.healthCondition,
+        province:data.province,
         cell: data.cell,
         sector: data.sector,
         district: data.district,
         motherTel: data.motherTel,
         fatherTel: data.fatherTel,
         emergencyTel: data.emergencyTel,
-        dateArrival: data.dateArrival
+        dateArrival: data.dateArrival,
+        pregnancyDuration: data.pregnancyDuration,
+        babyname: data.babyname,
+        babyage: data.babyage,
+        babygender:data.babygender
+
     });
 
     const result= await motherInstance.save();
