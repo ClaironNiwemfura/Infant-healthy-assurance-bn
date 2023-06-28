@@ -11,6 +11,7 @@ import appointment from "./routes/appointment.js";
 import healthinfo from "./routes/healthinfo.js"
 
 import notificationroutes from "./routes/notificationroutes.js";
+import broadcasting from "./routes/broadcast.js";
 import homepage from "./controllers/homepage.js";
 const server = express();
 server.use(express.json());
@@ -26,6 +27,7 @@ server.use("/api/v1/mother", mother)
 server.use("/api/v1/child", child)
 server.use("/api/v1/healthinfo",healthinfo);
 server.use("/api/v1/notification", notificationroutes);
+server.use("/api/v1/broadcast/send", broadcasting);
 
 const port = 3500;
 const connectToMongodb = () => {
