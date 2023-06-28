@@ -6,6 +6,7 @@ const createdoctoraccount = async (req, res) => {
     const data = req.body;
     const salt = await bcrypt.genSalt(8);
     const hashedPassword = await bcrypt.hash(data.password, salt);
+    console.log("reached here ...")
     data.password = hashedPassword;
     const savedUseremail = await CreateDoctorModel.findOne({
       email: data.email,

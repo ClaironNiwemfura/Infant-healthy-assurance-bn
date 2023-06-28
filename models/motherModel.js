@@ -23,7 +23,7 @@ const motherSchema= new mongoose.Schema({
         required: true
      },
      province:{
-        type:string,
+        type: String,
         required: true
      },
     cell:{
@@ -38,7 +38,7 @@ const motherSchema= new mongoose.Schema({
         required: true
     },
     motherTel:{
-        type: Number,
+        type: String,
         required: true
     },
     fatherTel:{
@@ -58,7 +58,7 @@ const motherSchema= new mongoose.Schema({
         type: String,
     },
     babyage:{
-        type: number,
+        type: Number,
     },
     babygender:{
         type: String,

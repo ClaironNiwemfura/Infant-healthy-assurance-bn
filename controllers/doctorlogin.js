@@ -11,9 +11,11 @@ dotenv.config();
 const loginDoctor = async (req,res)=>{
     try{
         const data = req.body;
-        const { email, password } = data;
+        console.log("req.body",req.body)
+        let { email, password } = data;
+        email ? email = data.email : email = data.name;
         const doctor = await CreateDoctorModel.findOne({ email:email});
-       
+        console.log("hellooooooo", doctor,data);
         if (doctor){
             let doctorId = doctor._id;
             let compare = await bcrypt.compare(password,doctor.password);
@@ -28,9 +30,6 @@ const loginDoctor = async (req,res)=>{
                     message:"your password is not true"
                 });  
             }
-            return res.json({
-                message:"you have logged in successfully"
-            });
         }else{
             return res.status(400).json({
                 message:"user not found "

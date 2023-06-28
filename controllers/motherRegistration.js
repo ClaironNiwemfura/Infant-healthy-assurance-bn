@@ -31,7 +31,7 @@ const motherRegister= async(req,res)=>{
         babygender:data.babygender
 
     });
-
+    console.log("mother registered", data);
     const result= await motherInstance.save();
 
     res.status(200).json({

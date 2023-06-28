@@ -27,7 +27,7 @@ server.use("/api/v1/child", child)
 server.use("/api/v1/healthinfo",healthinfo);
 server.use("/api/v1/notification", notificationroutes);
 
-const port = 3000;
+const port = 3500;
 const connectToMongodb = () => {
   mongoose
     .connect(process.env.MONGODBPASS)

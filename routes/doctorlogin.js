@@ -6,7 +6,7 @@ import authenticateDoctor from "../middlewares/doctorAuthentication.js";
 const router=express.Router();
 router.use(bodyParser.json());
 
-router.post("/login",authenticateDoctor,loginDoctor)
+router.post("/login",loginDoctor)
 
 
 export default router;
