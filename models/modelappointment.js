@@ -14,7 +14,7 @@ const appointmentSchema = new mongoose.Schema({
     required: true,
   },
   patientId:{
-    type:string,
+    type: String,
     required: true,
   }
 });
