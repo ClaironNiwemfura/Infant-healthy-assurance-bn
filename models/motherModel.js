@@ -15,7 +15,7 @@ const motherSchema= new mongoose.Schema({
         type: Number,
     },
     patientId:{
-     type: Number,
+     type: String,
      required: true
     },
     healthCondition:{
