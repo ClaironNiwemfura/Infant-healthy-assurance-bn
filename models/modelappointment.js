@@ -13,5 +13,9 @@ const appointmentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  patientid:{
+    type:Number,
+    required: true,
+  }
 });
 export default mongoose.model("appointment", appointmentSchema);

@@ -15,7 +15,7 @@ const motherSchema= new mongoose.Schema({
         type: Number,
     },
     patientId:{
-     type: String,
+     type: Number,
      required: true
     },
     healthCondition:{
@@ -23,7 +23,7 @@ const motherSchema= new mongoose.Schema({
         required: true
      },
      province:{
-        type:string,
+        type: String,
         required: true
      },
     cell:{
@@ -58,7 +58,7 @@ const motherSchema= new mongoose.Schema({
         type: String,
     },
     babyage:{
-        type: number,
+        type: Number,
     },
     babygender:{
         type: String,
