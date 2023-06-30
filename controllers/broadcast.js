@@ -4,7 +4,7 @@ import twilio from "twilio";
 
 const sendsms = async(data) =>{
     try{
-        const client =new twilio("AC89cc8c3f0bf185f72032a7bf01e7df93","fce5b8740f5e87e8444f99ca0364ae62");
+        const client =new twilio(process.env.TWILIO_ACCOUNT, process.env.TWILIO_KEY);
         const response = await client.messages.create(data);
         return response;
 
@@ -25,7 +25,7 @@ const sendBroadcast = async(req, res) => {
         if(category){
             const findCategory = await motherModel.find(query);
             if(findCategory.length){
-                for(let i=0; i<1; i++){
+                for(let i=0; i<2; i++){
                     let data = {
                         from:"+13614055837",
                         to:findCategory[i].motherTel,
@@ -57,6 +57,6 @@ const sendBroadcast = async(req, res) => {
     }
   };
 
-  export {sendBroadcast};
+  export {sendBroadcast,sendsms};
   
    

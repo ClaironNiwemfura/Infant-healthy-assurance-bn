@@ -13,7 +13,7 @@ const appointmentSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  patientId:{
+  motherTel:{
     type: String,
     required: true,
   }

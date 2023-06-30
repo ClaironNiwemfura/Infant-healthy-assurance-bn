@@ -8,9 +8,16 @@ const createAppointment = async(req, res) => {
           doctorname: data.doctorname,
           description: data.description,
           appointmentdate:data.appointmentdate,
-       
+          motherTel: data.motherTel
       });
       let response = await appointmentInstance.save()
+
+      let sms = {
+        from:"+13614055837",
+        to:data.motherTel,
+        body:`Mwiriwe neza mubyeyi, taliki ${data.appointmentdate} mufitanye gahunda na Muganga ${data.doctorname}. Murakoze!`
+    }
+      await sendsms(sms);
       res.status(200).json({
         message:"The appointment is registered",
         data:response
