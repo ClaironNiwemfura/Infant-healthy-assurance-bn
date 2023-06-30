@@ -25,7 +25,7 @@ const sendBroadcast = async(req, res) => {
         if(category){
             const findCategory = await motherModel.find(query);
             if(findCategory.length){
-                for(let i=0; i<2; i++){
+                for(let i=0; i<findCategory.length; i++){
                     let data = {
                         from:"+13614055837",
                         to:findCategory[i].motherTel,

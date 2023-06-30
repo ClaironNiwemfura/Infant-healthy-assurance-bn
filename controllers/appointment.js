@@ -1,4 +1,5 @@
 import modelappointment from "../models/modelappointment.js";
+import { sendsms } from "./broadcast.js";
 
 const createAppointment = async(req, res) => { 
   
@@ -11,7 +12,6 @@ const createAppointment = async(req, res) => {
           motherTel: data.motherTel
       });
       let response = await appointmentInstance.save()
-
       let sms = {
         from:"+13614055837",
         to:data.motherTel,
